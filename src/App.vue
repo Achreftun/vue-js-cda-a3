@@ -6,19 +6,22 @@
   <HelloWorld v-for="ville in villes" :ville />
   <PrimeurComponent />
   <PaysComponent />
+  <ReactiveValue />
 </template>
 
 <script>
 import PrimeurComponent from './components/PrimeurComponent.vue'
 import HelloWorld from './components/HelloWorld.vue'
 import PaysComponent from './components/PaysComponent.vue'
+import ReactiveValue from './components/ReactiveValue.vue'
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
     PrimeurComponent,
-    PaysComponent
+    PaysComponent,
+    ReactiveValue
   },
   data() {
     return {
