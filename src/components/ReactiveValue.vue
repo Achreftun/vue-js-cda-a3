@@ -5,7 +5,7 @@
     </div>
 </template>
 <script>
-import { watchEffect } from 'vue'
+import { computed } from 'vue'
 export default {
     data() {
         return {
@@ -15,9 +15,7 @@ export default {
         }
     },
     created() {
-        watchEffect(() => {
-            this.resultat = this.valeur1 + this.valeur2
-        })
+        this.resultat = computed(() => this.valeur1 + this.valeur2)
     },
     mounted() {
         setInterval(
