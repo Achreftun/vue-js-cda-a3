@@ -1,7 +1,7 @@
 <template>
   <img alt="Vue logo" class="logo" src="./assets/vue.svg">
   <img alt="Vite logo" class="logo" src="/vite.svg"> {{ pays }}
-  <HelloWorld ville="Marseille" @sendData="afficherPays" />
+  <HelloWorld ville="Marseille" @sendData="afficherPays" ref="enfant" />
   <HelloWorld>John</HelloWorld>
   <HelloWorld v-for="ville in villes" :ville />
   <PrimeurComponent />
@@ -30,6 +30,9 @@ export default {
     afficherPays(value) {
       this.pays = value
     }
+  },
+  mounted() {
+    console.log(this.$refs.enfant.msg);
   },
 }
 </script>

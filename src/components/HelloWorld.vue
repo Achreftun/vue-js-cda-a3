@@ -6,8 +6,8 @@
     Hello <slot>Doe</slot>
   </div>
   <div>
-      <input type="text" v-model="pays">
-      <button @click="envoyer">Envoyer au parent</button>
+    <input type="text" v-model="pays" ref="country">
+    <button @click="envoyer">Envoyer au parent</button>
   </div>
 
 </template>
@@ -31,6 +31,13 @@ export default {
     envoyer() {
       this.$emit('sendData', this.pays)
     }
+  },
+  created() {
+    console.log('created');
+  },
+  mounted() {
+    this.$refs.country.focus()
+    console.log('mounted');
   },
   emits: ['sendData']
 }
