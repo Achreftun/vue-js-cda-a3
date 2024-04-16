@@ -5,17 +5,20 @@
   <HelloWorld>John</HelloWorld>
   <HelloWorld v-for="ville in villes" :ville />
   <PrimeurComponent />
+  <PaysComponent />
 </template>
 
 <script>
 import PrimeurComponent from './components/PrimeurComponent.vue'
 import HelloWorld from './components/HelloWorld.vue'
+import PaysComponent from './components/PaysComponent.vue'
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
-    PrimeurComponent
+    PrimeurComponent,
+    PaysComponent
   },
   data() {
     return {
