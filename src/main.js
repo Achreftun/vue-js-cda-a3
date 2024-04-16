@@ -1,8 +1,12 @@
 import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
-import HelloWorld from './components/HelloWorld.vue'
+import router from './router'
 
-const app = createApp(App)//.component('HelloWorld', HelloWorld);
+const app = createApp(App)
 
-app.mount('#app')
+
+app
+    .use(router)
+    //.component('HelloWorld', HelloWorld);
+    .mount('#app')
