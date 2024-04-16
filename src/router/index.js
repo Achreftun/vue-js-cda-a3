@@ -8,18 +8,25 @@ import PrimeurView from "../views/PrimeurView.vue"
 import PaysView from "../views/PaysView.vue"
 import AdresseView from "../views/AdresseView.vue"
 import PersonneView from "../views/PersonneView.vue"
+import CalculView from "../views/CalculView.vue"
+import TableauView from "../views/TableauView.vue"
 import PersonneDetails from "../views/PersonneDetails.vue"
+import NotFound from "../views/NotFound.vue"
+
 
 const routes = [
     {
         path: '/',
         component: HomeView,
-        name: 'home'
+        name: 'home',
+        alias: ['/accueil', '/home'],
+        meta: { title: "Page d'accueil" }
     },
     {
         path: '/about',
         component: AboutView,
-        name: 'about'
+        name: 'about',
+        meta: { title: "À propos" }
     },
     {
         path: '/reactive',
@@ -47,16 +54,49 @@ const routes = [
         name: 'personne'
     },
     {
+        path: '/person',
+        redirect: '/personne'
+    },
+    {
         path: '/personne/:id',
         component: PersonneDetails,
         name: 'personne-details',
         props: true
     },
+    {
+        path: '/calcul/:op',
+        component: CalculView,
+        name: 'calcul',
+        props: true
+    },
+    {
+        path: '/tableau',
+        redirect: { name: 'tableau', params: { id: 0 } }
+    },
+    {
+        path: '/tableau/:id',
+        component: TableauView,
+        name: 'tableau',
+        props: true
+    },
+    {
+        path: '/:pathMatch(.*)',
+        name: 'not-found',
+        component: NotFound
+    }
 ]
 
 const router = createRouter({
     history: createWebHistory(),
-    routes
+    routes,
+    linkActiveClass: 'lien-actif'
 })
+
+
+router.beforeEach((to, from, next) => {
+    document.title = to.meta.title || "Vite + Vue"
+    next()
+})
+
 
 export default router

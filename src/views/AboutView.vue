@@ -3,6 +3,12 @@
     <HelloWorld ville="Marseille" @sendData="afficherPays" ref="enfant" />
     <HelloWorld>John</HelloWorld>
     <HelloWorld v-for="ville in villes" :ville />
+    <router-link :to="{ name: 'adresse', query: { rue: 'paradis', ville: 'Marseille', cp: '13006' } }">
+        Cliquer pour visiter Marseille
+    </router-link>
+    <button @click="goToPersonne">
+        Détails de Sophie
+    </button>
 </template>
 
 <script>
@@ -21,6 +27,9 @@ export default {
     methods: {
         afficherPays(value) {
             this.pays = value
+        },
+        goToPersonne() {
+            this.$router.push({ name: 'personne-details', params: { id: 3 } })
         }
     },
     mounted() {
