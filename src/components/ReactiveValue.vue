@@ -5,17 +5,17 @@
     </div>
 </template>
 <script>
-import { computed } from 'vue'
 export default {
     data() {
         return {
             valeur1: 2,
             valeur2: 5,
-            resultat: null
         }
     },
-    created() {
-        this.resultat = computed(() => this.valeur1 + this.valeur2)
+    computed: {
+        resultat() {
+            return this.valeur1 + this.valeur2
+        }
     },
     mounted() {
         setInterval(
