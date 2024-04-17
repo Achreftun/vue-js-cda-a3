@@ -66,7 +66,7 @@ export default {
   methods: {
     ajouterPersonne(values, actions) {
       axios
-          .post(`http://localhost:5555/personnes`, values)
+          .post(`${this.BASE_URL}/personnes`, values)
           .then(res => this.$emit('sendData', res.data))
       actions.resetForm()
     },

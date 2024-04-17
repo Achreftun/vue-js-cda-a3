@@ -2,14 +2,18 @@
   <h1>Gestion de personnes</h1>
   <PersonneAdd @send-data="ajouterPersonne"/>
   <h2>Liste de personnes </h2>
-  <ul>
-    <li v-for='elt in personnes'>
+  <ul v-if="!erreur">
+    <li v-for='(elt, ind) in personnes'>
       {{ elt.prenom }} {{ elt.nom }}
       <router-link :to="{ name: 'personne-details', params: { id: elt.id } }">
-        détails
+        modifier
       </router-link>
+      <button @click="supprimerPersonne(elt.id, ind)">
+        supprimer
+      </button>
     </li>
   </ul>
+  <p v-else>{{ erreur }}</p>
 </template>
 <script>
 import PersonneAdd from '../components/PersonneAdd.vue';
@@ -21,27 +25,25 @@ export default {
   },
   data() {
     return {
-      personnes: [
-        // { id: 1, nom: 'Wick', prenom: 'John', age: 45 },
-        // { id: 2, nom: 'Dalton', prenom: 'Jack', age: 40 },
-        // { id: 3, nom: 'Dupont', prenom: 'Sophie', age: 30 }
-      ]
+      personnes: [],
+      erreur: null
     }
   },
   methods: {
     ajouterPersonne(data) {
       this.personnes.push(data);
+    },
+    supprimerPersonne(id, ind) {
+      axios
+          .delete(`${this.BASE_URL}/personnes/${id}`)
+          .then(res => this.personnes.splice(ind, 1))
     }
   },
   created() {
-    // axios({
-    //   method: 'get',
-    //   url:`http://localhost:5555/personnes`
-    // })
-    //     .then(res => this.personnes = res.data)
     axios
-        .get(`http://localhost:5555/personnes`)
+        .get(`${this.BASE_URL}/personnes`)
         .then(res => this.personnes = res.data)
+        .catch(() => this.erreur = 'Problème de récupération de données')
   }
 
 }

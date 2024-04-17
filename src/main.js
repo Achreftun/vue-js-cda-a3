@@ -20,6 +20,7 @@ configure({
 // personnaliser la langue des messages d'erreur
 setLocale(fr);
 
+app.config.globalProperties.BASE_URL = 'http://localhost:5555';
 app
     .use(router)
     //.component('HelloWorld', HelloWorld);
