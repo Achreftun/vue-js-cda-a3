@@ -5,24 +5,24 @@
         <li>Prénom : {{ personne.prenom }}</li>
         <li>Âge : {{ personne.age }}</li>
     </ul>
+  <button @click="$router.push('/personne')">
+    Retour
+  </button>
+  
 </template>
 <script>
+import axios from "axios";
 export default {
-    
     data() {
         return {
-            personnes: [
-                { id: 1, nom: 'Wick', prenom: 'John', age: 45 },
-                { id: 2, nom: 'Dalton', prenom: 'Jack', age: 40 },
-                { id: 3, nom: 'Dupont', prenom: 'Sophie', age: 30 }
-            ]
+          personne : {}
         }
     },
     props: ['id'],
-    computed: {
-        personne() {
-            return this.personnes.find(elt => elt.id == this.$route.params.id)
-        }
+    created() {
+       axios
+           .get(`http://localhost:5555/personnes/${this.id}`)
+           .then(res => this.personne = res.data)
     }
 }
 </script>
