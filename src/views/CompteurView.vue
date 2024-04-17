@@ -7,40 +7,16 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import {ref} from "vue";
 
-export default {
-  setup() {
-    const compteur = ref(0)
-    const incrementer = () => {
-      compteur.value++
-    }
-    const decrementer = () => {
-      compteur.value--
-    }
-    return {
-      compteur,
-      incrementer,
-      decrementer
-    }
-  }
+const compteur = ref(0)
+const incrementer = () => {
+  compteur.value++
 }
-// export default {
-//   data() {
-//     return {
-//       compteur: 0
-//     }
-//   },
-//   methods: {
-//     incrementer() {
-//       this.compteur++
-//     },
-//     decrementer() {
-//       this.compteur--
-//     }
-//   }
-// }
+const decrementer = () => {
+  compteur.value--
+}
 </script>
 
 
