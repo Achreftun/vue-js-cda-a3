@@ -12,6 +12,7 @@ import CalculView from "../views/CalculView.vue"
 import TableauView from "../views/TableauView.vue"
 import PersonneDetails from "../views/PersonneDetails.vue"
 import NotFound from "../views/NotFound.vue"
+import CompteurView from "../views/CompteurView.vue";
 
 
 const routes = [
@@ -47,6 +48,11 @@ const routes = [
         path: '/adresse',
         component: AdresseView,
         name: 'adresse'
+    },
+    {
+        path: '/compteur',
+        component: CompteurView,
+        name: 'compteur'
     },
     {
         path: '/personne',
