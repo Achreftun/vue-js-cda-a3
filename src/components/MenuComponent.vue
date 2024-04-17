@@ -24,5 +24,3 @@ li {
     font-weight: bold;
 }
 </style>
-<script setup lang="ts">
-</script>

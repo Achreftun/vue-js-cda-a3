@@ -3,7 +3,8 @@
     {{ msg }} from {{ ville }}
   </div>
   <div>
-    Hello <slot>Doe</slot>
+    Hello
+    <slot>Doe</slot>
   </div>
   <div>
     <input type="text" v-model="pays" ref="country">
@@ -11,35 +12,14 @@
   </div>
 
 </template>
+<script setup>
+import {ref} from "vue";
 
-<script>
-export default {
-  name: 'HelloWorld',
-  data() {
-    return {
-      msg: 'Hello world',
-      pays: ''
-    }
-  },
-  props: {
-    ville: {
-      type: String,
-      default: 'Paris'
-    }
-  },
-  methods: {
-    envoyer() {
-      this.$emit('sendData', this.pays)
-    }
-  },
-  created() {
-    console.log('created');
-  },
-  mounted() {
-    this.$refs.country.focus()
-    console.log('mounted');
-  },
-  emits: ['sendData']
-}
+const msg = ref('Hello world')
+const pays = ref('')
+defineProps({ville: String})
+const emit = defineEmits(['sendData'])
+const envoyer = () => emit('sendData', pays.value)
+defineExpose({msg})
 </script>
 <style scoped></style>
