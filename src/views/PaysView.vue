@@ -7,18 +7,10 @@
     </ul>
 
 </template>
-<script>
+<script setup>
 import VilleComponent from '../components/VilleComponent.vue'
-export default {
-    components: {
-        VilleComponent
-    },
-    data() {
-        return {
-            villes: ['Marseille', 'Lyon', 'Paris']
-        }
-    },
+import {reactive} from "vue";
 
-}
+const villes = reactive(['Marseille', 'Lyon', 'Paris'])
 </script>
 <style></style>
