@@ -8,8 +8,8 @@
       <router-link :to="{ name: 'personne-details', params: { id: elt.id } }">
         modifier
       </router-link>
-      <button @click="supprimerPersonne(elt.id, ind)">
-        supprimer
+      <button class="btn" @click="supprimerPersonne(elt.id, ind)">
+        <i class="fa-solid fa-trash-can" style="color: #da0b20;"></i>
       </button>
     </li>
   </ul>

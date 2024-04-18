@@ -13,6 +13,7 @@ import TableauView from "../views/TableauView.vue"
 import PersonneDetails from "../views/PersonneDetails.vue"
 import NotFound from "../views/NotFound.vue"
 import CompteurView from "../views/CompteurView.vue";
+import PanierView from "../views/PanierView.vue";
 
 
 const routes = [
@@ -48,6 +49,10 @@ const routes = [
         path: '/adresse',
         component: AdresseView,
         name: 'adresse'
+    },    {
+        path: '/panier',
+        component: PanierView,
+        name: 'panier'
     },
     {
         path: '/compteur',

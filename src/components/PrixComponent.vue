@@ -1,5 +1,5 @@
 <template>
-  <span>Prix TTC : {{ prix + prix * tva }}€</span>
+  <span>{{ prix + prix * tva }}€</span>
 </template>
 
 <script setup>

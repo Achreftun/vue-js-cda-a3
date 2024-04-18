@@ -3,12 +3,15 @@
         {{ produit.nom }}, <PrixComponent :prix="produit.prix"/>, {{ produit.quantite }}
         <span>
             <input type="number" v-model="quantiteReservee">
-            <button :disabled @click="envoyer">Ajouter dans le panier</button>
+            <button class="btn" :disabled @click="envoyer">
+              <i class="fa-solid fa-cart-plus"></i>
+            </button>
         </span>
     </li>
 </template>
 <script>
 import PrixComponent from "./PrixComponent.vue";
+import {useProduitStore} from "../stores/produit.store.js";
 
 export default {
   components: {PrixComponent},
@@ -29,6 +32,11 @@ export default {
         envoyer() {
             this.$emit('sendData', this.quantiteReservee)
             this.disabled = true
+            const  produitStore = useProduitStore();
+            produitStore.ajouterLigneCommande({
+              quantite: this.quantiteReservee,
+              produit: this.produit
+            })
         }
     },
     emits: ['sendData']
