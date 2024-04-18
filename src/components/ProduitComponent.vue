@@ -1,6 +1,6 @@
 <template>
     <li>
-        {{ produit.nom }}, {{ produit.prix }}€, {{ produit.quantite }}
+        {{ produit.nom }}, <PrixComponent :prix="produit.prix"/>, {{ produit.quantite }}
         <span>
             <input type="number" v-model="quantiteReservee">
             <button :disabled @click="envoyer">Ajouter dans le panier</button>
@@ -8,7 +8,10 @@
     </li>
 </template>
 <script>
+import PrixComponent from "./PrixComponent.vue";
+
 export default {
+  components: {PrixComponent},
     data() {
         return {
             quantiteReservee: null,
